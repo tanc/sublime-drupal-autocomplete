@@ -33,7 +33,7 @@ class ProjectCompletionsScan(threading.Thread):
                                     arglist = row[1].replace(', ', ',').split(',')
                                     for i, val in enumerate(arglist):
                                         #arglist[i] = '${' + str(i + 1) + ':' + arglist[i].replace('$', '\$') + '}'
-                                        arglist[i] = '${%s:%s}'   % (i, arglist[i].replace('$', '\$'))
+                                        arglist[i] = '${%s:%s}'   % (i + 1, arglist[i].replace('$', '\$'))
                                     args = '(%s)'   % (', '.join(arglist))
                                 else:
                                     args = '()'
