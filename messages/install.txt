@@ -1,0 +1,9 @@
+Usage instructions:
+
+For this plugin to provide autocompletions for your Drupal project you must have an ST2 project file saved in the root of the Drupal project.
+
+To do this open your Drupal files (drag and drop the whole directory onto Sublime Text 2) and then save a new project by using the Project menu item. Make sure you save it in the Drupal root (where the index.php and CHANGELOG.txt files are) and call it whatever you want.
+
+If you are using a VCS like git you will want to exclude this plugin's autocompletions file. If you are using git you can add something like the following line to your gitignore file:
+
+*.sublime-projectcompletions

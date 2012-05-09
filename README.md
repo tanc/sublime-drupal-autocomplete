@@ -5,7 +5,9 @@ This is a package manager hosted plugin for Sublime Text 2 which provides autoco
 
 ## Requirements
 
-For this plugin to provide an autocompletions you must have a ST2 project file saved in the root of the Drupal project. To do this open your Drupal files (drag and drop the whole directory onto Sublime Text 2) and then save a new project by using the Project menu item. Save it in the Drupal root (where the install.php and CHANGELOG.txt files are) and call it whatever you want.
+For this plugin to provide autocompletions for your Drupal project you must have an ST2 project file saved in the root of the Drupal project.
+
+To do this open your Drupal files (drag and drop the whole directory onto Sublime Text 2) and then save a new project by using the Project menu item. Make sure you save it in the Drupal root (where the index.php and CHANGELOG.txt files are) and call it whatever you want.
 
 ## How it works
 
@@ -16,7 +18,8 @@ It then uses the ST2 API to inject these possible completions as you start typin
 ## Notes
 
 If you are using a VCS you will want to exclude this plugin's autocompletions file. If you are using git you can add something like the following line to your gitignore file:
-    *.sublime-projectcompletions
+
+```*.sublime-projectcompletions```
 
 Theoretically it would be possible to save the ST2 project files anywhere within the Drupal project which could allow for subprojects if that is how you use ST2 with Drupal. For instance, you might have a single Drupal root with many multisites under sites/ and have a different ST2 project for each one. This plugin will still work but will not provide autocomplete for any functions above the ST2 project in the filesystem.
 
