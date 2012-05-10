@@ -19,7 +19,7 @@ It then uses the ST2 API to inject these possible completions as you start typin
 
 If you are using a VCS you will want to exclude this plugin's autocompletions file. If you are using git you can add something like the following line to your gitignore file:
 
-```*.sublime-projectcompletions```
+*.sublime-projectcompletions
 
 Theoretically it would be possible to save the ST2 project files anywhere within the Drupal project which could allow for subprojects if that is how you use ST2 with Drupal. For instance, you might have a single Drupal root with many multisites under sites/ and have a different ST2 project for each one. This plugin will still work but will not provide autocomplete for any functions above the ST2 project in the filesystem.
 
