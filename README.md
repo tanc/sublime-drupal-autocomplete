@@ -9,6 +9,10 @@ For this plugin to provide autocompletions for your Drupal project you must have
 
 To do this open your Drupal files (drag and drop the whole directory onto Sublime Text 2) and then save a new project by using the Project menu item. Make sure you save it in the Drupal root (where the index.php and CHANGELOG.txt files are) and call it whatever you want.
 
+## How to install
+
+The easiest way to install is through the [Sublime Package Control](http://wbond.net/sublime_packages/package_control) repository (currently awaiting approval). If you've come to the github page and are looking to install this manually you'll want to fetch the master branch and rename the resulting directory DPCompletions. Move this directory into your ST2 packages directory (on OS X its located in ~/Library/Application Support/Sublime Text 2/Packages/) and it should automatically get picked up as a new plugin. You may need to restart ST2.
+
 ## How it works
 
 The plugin scans upwards from the currently saved file, looking for the ST2 project file. It uses this to determine the root directory of the project and from here is loads all files (.module, .inc etc) and looks for functions within them. It builds a projectcompletions file (basically a big json array) containing the function name and any expected parameters. Note that it does this on every file save.
