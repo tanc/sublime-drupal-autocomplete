@@ -57,12 +57,12 @@ class ProjectCompletions(sublime_plugin.EventListener):
         while True:
             for filename in os.listdir(start_at):
                 if fnmatch.fnmatch(filename, look_for):
-                    return os.path.join(start_at, filename) 
+                    return os.path.join(start_at, filename)
             continue_at = os.path.abspath(os.path.join(start_at, '..'))
             if continue_at == start_at:
                 return None
             start_at = continue_at
-    
+
     def on_post_save(self, view):
         path = view.file_name()
         rootPath = None
@@ -94,10 +94,11 @@ class ProjectCompletions(sublime_plugin.EventListener):
             while len(line) != 0:
                e1, e2 = line.split("\t")
                t = e1, e2.rstrip()
-               data.append(t)
+               if prefix in e1:
+                   data.append(t)
                line = fp.readline()
-               
+
             fp.close()
             return data
         else:
-            return None
+            return []
