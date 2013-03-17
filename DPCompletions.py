@@ -78,6 +78,8 @@ class ProjectCompletions(sublime_plugin.EventListener):
             thread.start()
 
     def on_query_completions(self, view, prefix, locations):
+        if not view.match_selector(locations[0], "source.php"):
+            return []
         path = view.file_name()
         completions_location = None
         if path:
@@ -101,4 +103,4 @@ class ProjectCompletions(sublime_plugin.EventListener):
             fp.close()
             return data
         else:
-            return None
+            return []
