@@ -1,8 +1,5 @@
 import os, fnmatch, re, threading, sublime, sublime_plugin
 
-#globals
-dpa_settings_filename = "DPCompletions.sublime-settings"
-
 class ProjectCompletionsScan(threading.Thread):
 
     def __init__(self, rootPath, timeout):
@@ -81,9 +78,6 @@ class ProjectCompletions(sublime_plugin.EventListener):
             thread.start()
 
     def on_query_completions(self, view, prefix, locations):
-        dpa_settings = sublime.load_settings(dpa_settings_filename)
-        dpa_match = dpa_settings.get('drupal_project_autocomplete_match_type')
-        print dpa_match
         path = view.file_name()
         completions_location = None
         if path:
@@ -99,14 +93,9 @@ class ProjectCompletions(sublime_plugin.EventListener):
 
             while len(line) != 0:
                 e1, e2 = line.split("\t")
-                if dpa_match == "contains":
-                    if re.search(prefix, e1, re.IGNORECASE):
-                        t = e1, e2.rstrip()
-                        data.append(t)
-                else:
-                    if re.match(prefix, e1, re.IGNORECASE):
-                        t = e1, e2.rstrip()
-                        data.append(t)
+                if re.search(prefix, e1, re.IGNORECASE):
+                    t = e1, e2.rstrip()
+                    data.append(t)
                 line = fp.readline()
 
             fp.close()
