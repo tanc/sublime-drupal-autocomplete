@@ -3,6 +3,8 @@ Sublime Text 2 Drupal autocomplete plugin
 
 This is a package manager hosted plugin for Sublime Text 2 which provides autocomplete for all Drupal functions on a per project basis. This means that you can have this plugin autocomplete your Drupal 7 project's functions and provide argument hinting as well as your Drupal 6 project with no clashes. It manages this by scanning your project's files and creating a file in your project's root directory called Drupal.sublime-projectcompletions containing Sublime Text 2's autocomplete data. The plugin then injects this into ST2's autocomplete using the API and the result should be autocomplete suggestions for all functions in your project.
 
+This functionality might also be acheived using the ctags or SublimeCodeIntel packages, but this package is a Drupal centric package and works out of the box.
+
 ## Requirements
 
 For this plugin to provide autocompletions for your Drupal project you must have an ST2 project file saved in the root of the Drupal project.
