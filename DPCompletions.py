@@ -93,7 +93,7 @@ class ProjectCompletions(sublime_plugin.EventListener):
 
             while len(line) != 0:
                 e1, e2 = line.split("\t")
-                if re.search(prefix, e1, re.IGNORECASE):
+                if re.match(prefix, e1, re.IGNORECASE):
                     t = e1, e2.rstrip()
                     data.append(t)
                 line = fp.readline()
