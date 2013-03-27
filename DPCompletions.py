@@ -44,7 +44,7 @@ class ProjectCompletionsScan(threading.Thread):
             cfp.close()
             return
         except:
-            print "Unexpected error:", sys.exc_info()[0]
+            print("Unexpected error:", sys.exc_info()[0])
             raise
 
 
@@ -63,7 +63,7 @@ class ProjectCompletions(sublime_plugin.EventListener):
                 return None
             start_at = continue_at
 
-    def on_post_save(self, view):
+    def on_post_save_async(self, view):
         path = view.file_name()
         rootPath = None
 
