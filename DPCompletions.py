@@ -11,7 +11,7 @@ class ProjectCompletionsScan(threading.Thread):
     def run(self):
         try:
             patterns = ['.inc', '.php', '.module']
-            search = re.compile(r'^function\s(.+?)\((?:(.+?))?\)\s{$', re.MULTILINE)
+            search = re.compile(r'^function\s(.+?)\((?:(.+?))?\)\s{', re.MULTILINE)
             compPath = os.path.dirname(self.rootPath) + '/Drupal.sublime-projectcompletions'
             cfp = open(compPath, 'w')
             cfp.close()
@@ -22,7 +22,7 @@ class ProjectCompletionsScan(threading.Thread):
                     for f in files:
                         if f.endswith(p):
                             # Open the file.
-                            fp = open(os.path.join(root, f), 'r')
+                            fp = open(os.path.join(root, f), 'r', encoding="latin-1")
                             content = fp.read()
                             # Retrieve functions from file.
                             funcs = search.findall(content)
