@@ -72,7 +72,7 @@ class ProjectCompletions(sublime_plugin.EventListener):
         if path:
             # Try to find the myproject.sublime-project file
             for filename in ['*.sublime-project']:
-                rootPath = self.find_file(path, filename)a
+                rootPath = self.find_file(path, filename)
         if rootPath:
             threads = []
             thread = ProjectCompletionsScan(rootPath, 5)
