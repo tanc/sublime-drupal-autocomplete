@@ -64,7 +64,7 @@ class ProjectCompletions(sublime_plugin.EventListener):
             start_at = continue_at
 
     def on_post_save(self, view):
-        if view.settings().get("drupal_project_autocomplete") == False:
+        if view.settings().get("drupal_project_autocomplete_ignore"):
             return;
         path = view.file_name()
         rootPath = None
@@ -80,7 +80,7 @@ class ProjectCompletions(sublime_plugin.EventListener):
             thread.start()
 
     def on_query_completions(self, view, prefix, locations):
-        if view.settings().get("drupal_project_autocomplete") == False:
+        if view.settings().get("drupal_project_autocomplete_ignore"):
             return []
         if not view.match_selector(locations[0], "source.php"):
             return []
