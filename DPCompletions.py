@@ -1,4 +1,4 @@
-import os, fnmatch, re, threading, sublime, sublime_plugin
+import os, fnmatch, re, threading, sublime, sublime_plugin, sys, codecs
 
 class ProjectCompletionsScan(threading.Thread):
 
@@ -22,7 +22,7 @@ class ProjectCompletionsScan(threading.Thread):
                     for f in files:
                         if f.endswith(p):
                             # Open the file.
-                            fp = open(os.path.join(root, f), 'r')
+                            fp = codecs.open(os.path.join(root, f), 'r', encoding='utf-8', errors='ignore')
                             content = fp.read()
                             # Retrieve functions from file.
                             funcs = search.findall(content)
@@ -43,7 +43,8 @@ class ProjectCompletionsScan(threading.Thread):
             cfp.close()
             return
         except:
-            print "Unexpected error:", sys.exc_info()[0]
+            exc = sys.exc_info()[1]
+            sublime.status_message(str(exc))
             raise
 
 
