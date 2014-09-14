@@ -64,13 +64,15 @@ class ProjectCompletions(sublime_plugin.EventListener):
             start_at = continue_at
 
     def on_post_save(self, view):
+        if view.settings().get("drupal_project_autocomplete") == False:
+            return;
         path = view.file_name()
         rootPath = None
 
         if path:
             # Try to find the myproject.sublime-project file
             for filename in ['*.sublime-project']:
-                rootPath = self.find_file(path, filename)
+                rootPath = self.find_file(path, filename)a
         if rootPath:
             threads = []
             thread = ProjectCompletionsScan(rootPath, 5)
@@ -78,6 +80,8 @@ class ProjectCompletions(sublime_plugin.EventListener):
             thread.start()
 
     def on_query_completions(self, view, prefix, locations):
+        if view.settings().get("drupal_project_autocomplete") == False:
+            return []
         if not view.match_selector(locations[0], "source.php"):
             return []
         path = view.file_name()
